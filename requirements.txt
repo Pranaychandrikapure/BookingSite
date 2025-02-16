@@ -4,7 +4,7 @@ charset-normalizer==3.4.1
 dj-database-url==2.1.0
 Django==4.2.7
 django-environ==0.12.0
-django-payments==3.0.1
+django-payments
 django-phonenumber-field==8.0.0
 gunicorn==21.2.0
 idna==3.10
