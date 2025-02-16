@@ -10,12 +10,7 @@ SECRET_KEY = 'django-insecure-%*ih34_#5wezfcq&@+a@a1xg)5b$5f1n6b=c3sta&#83%jtke2
 
 
 DEBUG = True
-<<<<<<< HEAD
-ALLOWED_HOSTS = []
-=======
-ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1']
-
->>>>>>> 03122cab3873c35578d0af7c4f502fa524c3987a
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -35,10 +30,10 @@ SITE_ID = 1
 PAYMENT_HOST = "http://127.0.0.1:8000"
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # Add this middleware
+    'django.contrib.sessions.middleware.SessionMiddleware',  # Make sure this is here
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',  # This comes after SessionMiddleware
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
