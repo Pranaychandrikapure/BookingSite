@@ -11,8 +11,8 @@ idna==3.10
 packaging==24.2
 phonenumberslite==8.13.53
 pillow==11.1.0
-psycopg2-binary==2.9.10
-
+psycopg
+psycopg-binary
 razorpay==1.4.2
 requests==2.32.3
 sqlparse==0.5.3
