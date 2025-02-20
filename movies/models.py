@@ -12,7 +12,6 @@ class Movie(models.Model):
     release_date = models.DateField(null=True, blank=True)
     image = models.ImageField(upload_to="movies/", blank=True, null=True)
     rating = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)
-    cast = models.TextField(blank=True, null=True)
     trailer_url = models.URLField(blank=True, null=True)
     show_time = models.DateTimeField(null=True, blank=True)
     genre = models.CharField(max_length=100, default="Unknown")
