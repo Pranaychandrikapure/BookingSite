@@ -125,8 +125,8 @@ no
     "1024": { "slidesPerView": 4, "spaceBetween": 20 } 
   }'
   style="width: 100%; max-width: 1200px; margin: auto;">
-    {% if movies %}
-      {% for movie in movies %}
+    {% if movies_list %}
+      {% for movie in movies_list %}
       <swiper-slide>
         <a href="{% url 'theater_list' movie.id %}" class="text-decoration-none">
           <div class="card h-100 shadow-sm">
