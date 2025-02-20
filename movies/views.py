@@ -23,11 +23,22 @@ def movie_list(request):
     return render(request, "movies/movie_list.html", {"movies": page_obj})
 
 
+def movie_list(request):
+    """ View to list movies with search and pagination. """
+    search_query = request.GET.get('search', '')
+    movies = Movie.objects.all()
+    if search_query:
+        movies = movies.filter(name__icontains=search_query)
+    paginator = Paginator(movies, 4)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, "movies/movie_list.html", {"movies": page_obj})
+
+
 def theater_list(request, movie_id):
     movie = get_object_or_404(Movie, id=movie_id)
-    theaters = Theater.objects.filter(movie=movie)
+    theaters = Theater.objects.filter(movie_id=movie_id)
     return render(request, 'movies/theater_list.html', {'movie': movie, 'theaters': theaters})
-
 
 def movie_detail(request, movie_id):
     movie = get_object_or_404(Movie, id=movie_id)
@@ -38,7 +49,6 @@ def movie_detail(request, movie_id):
         video_id = query_params.get("v", [None])[0] or (parsed_url.path[1:] if parsed_url.netloc in ["youtu.be", "www.youtu.be"] else None)
     embed_url = f"https://www.youtube.com/embed/{video_id}" if video_id else None
     return render(request, "movies/movie_detail.html", {"movie": movie, "embed_url": embed_url})
-
 def release_expired_reservations():
     expired_time = now() - timedelta(minutes=5)
     expired_seats = Seat.objects.filter(reserved_at__lt=timezone.now() - timedelta(minutes=5))
